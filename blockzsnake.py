@@ -8,6 +8,8 @@ screen_w = 500
 screen_l = 500
 screen = pygame.display.set_mode((screen_w, screen_l), pygame.RESIZABLE)
 pygame.display.set_caption('Blockz Snake By Tensa Zangetsu')
+icon = pygame.image.load('snake.png')
+pygame.display.set_icon(icon)
 red = (255, 0, 0)
 lime = (39, 213, 7)
 white = (255, 255, 255)
@@ -16,9 +18,11 @@ yellow = (255, 255, 0)
 black = (0, 0, 0)
 font_style = pygame.font.SysFont("bahnschrift", 50)
 score_font = pygame.font.SysFont("Helvetica", 50)
+
+
 snake_block = 10
 food_block = 10
-snake_speed = 17
+snake_speed = 15
 x1 = 300
 y1 = 300
 foodx = round(random.randrange(0, screen_w - snake_block) / 10.0) * 10.0
@@ -26,6 +30,9 @@ foody = round(random.randrange(0, screen_l - snake_block) / 10.0) * 10.0
 
 x_change = 0
 y_change = 0
+def bg(image):
+    size = pygame.transform.scale(image, (screen_w,screen_l))
+    screen.blit(size, (0,0))
 
 def Your_score(score):
     value = score_font.render("Your Score: " + str(score), True, yellow)
